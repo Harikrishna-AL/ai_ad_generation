@@ -17,7 +17,7 @@ def init_and_load():
     
     model_4bit = AutoModelForCausalLM.from_pretrained( model_id, device_map="auto",quantization_config=quantization_config, )
     tokenizer = AutoTokenizer.from_pretrained(model_id)
-    pipeline = pipeline(
+    _pipeline = pipeline(
             "text-generation",
             model=model_4bit,
             tokenizer=tokenizer,
@@ -31,7 +31,7 @@ def init_and_load():
             pad_token_id=tokenizer.eos_token_id,
     )
     
-    llm = HuggingFacePipeline(pipeline=pipeline)
+    llm = HuggingFacePipeline(pipeline=_pipeline)
     return llm
     
 
