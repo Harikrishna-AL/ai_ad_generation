@@ -14,7 +14,7 @@ def load_data(file_path):
     loader = CSVLoader(file_path=file_path, csv_args={
         'delimiter': ',',
         'quotechar': '"',
-        'fieldnames': ['Product Name','Description'],
+        'fieldnames': ['Product Name','Price','Description'],
     })
 
     documents = loader.load()
