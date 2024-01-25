@@ -12,7 +12,7 @@ quantization_config = BitsAndBytesConfig(
 
 
 def init_and_load():
-    model_id = "mistralai/Mistral-7B-Instruct-v0.1"
+    model_id = "mistralai/Mixtral-8x7B-Instruct-v0.1"
     
     
     model_4bit = AutoModelForCausalLM.from_pretrained( model_id, device_map="auto",quantization_config=quantization_config, )
@@ -20,6 +20,7 @@ def init_and_load():
     _pipeline = pipeline(
             "text-generation",
             model=model_4bit,
+            temperature = 0.001,
             tokenizer=tokenizer,
             use_cache=True,
             device_map="auto",
